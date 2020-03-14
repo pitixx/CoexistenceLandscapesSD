@@ -1,0 +1,16 @@
+class	description
+10	Crop rainfed
+11	Crop rainfed - herbaceous cover
+30	Mosaic cropland (>50%) / natural vegetation (tree/shrub/herbaceous cover) (<50%)
+40	Mosaic natural vegetation (tree/shrub/herbaceous cover) (>50%) / cropland (<50%) 
+60	Tree cover  broadleaved  deciduous  closed to open (>15%)
+62	Tree cover  broadleaved  deciduous  open (15-40%)
+100	Mosaic tree and shrub (>50%) / herbaceous cover (<50%)
+110	Mosaic herbaceous cover (>50%) / tree and shrub (<50%)
+120	Shrubland
+122	Shrubland deciduous
+130	Grassland
+180	Shrub or herbaceous cover flooded fresh/saline/brakish water
+190	Urban areas
+200	Bare areas
+210	Water bodies

@@ -5,6 +5,7 @@ source('scripts/pkg_functions.R')
 
 # we start with BW — using the land cover brick (in conical equal area projection) prepared earlier in QGIS. 
 
+
 # cut down the time range to 2000-2018
 
 lc_bw_99_18 <- lc_bw_92_18[[8:27]]

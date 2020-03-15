@@ -8,8 +8,7 @@ right  <-  function(text, num_char) {
   substr(text, nchar(text) - (num_char-1), nchar(text))
 }
 
-
-## Function xtab to give the count of each type of pixel, which multiplied by 89464.32 and divided by 1e6 will give the area in km2.
+####  Function xtab to give the count of each type of pixel, which multiplied by 89464.32 and divided by 1e6 will give the area in km2. ####  
 xtab_land <- function(lc_brick, mask){
   for(i in 1:length(names(lc_brick))) {
     x <- data.frame()
@@ -21,10 +20,10 @@ xtab_land <- function(lc_brick, mask){
   return(dat)
 }
 
-# Function to declare raster bricks as categorical
+#### Function to declare raster bricks as categorical ####
 ratirat <- function(brick){
   for(i in length(names(brick)))
-    ratify(lc_zw_92_15[[i]])
+    ratify(brick[[i]])
 }
 
 ### Function to extract zonal from brick and put in df #### 
@@ -50,28 +49,28 @@ Xtract <- function(layer,mask,variab,country) {
 }
 
 ##### Function to calculate annual land cover changes ####
+
 lcc_calc <- function(brick,country,year_range) {
   ct_l <- list()
-  # Perform the crosstab (gives a list)
-  for(i in 1:length(year_range)-1) {
+    # Perform the crosstab (gives a list)
+  for(i in 1:(length(year_range)-1)) {
     ct_l[[i]] <- crosstab(brick[[i]],brick[[i+1]],long=T)
   }
+    #change colnames in each dataframe in the list. 
+    ct_l <- lapply(ct_l,setNames,c("from_class","to_class","area_km2"))
   
-  #change colnames in each dataframe in the list. 
-  ct_l <- lapply(ct_l,setNames,c("from_class","to_class","area_km2"))
-  
-  # add the later year in the comparisin as column in each data frame in the list
-  ct_l <- Map(cbind, ct_l, year=year_range)
+    # add the later year in the comparison as column in each data frame in the list
+    ct_l <- Map(cbind, ct_l, year=c(2000:2018))
 
-# bind the dataframes in the list into a single data frame
-  ct_bw_d <- Reduce(rbind,ct_l)
+    # bind the dataframes in the list into a single data frame
+  ct_d <- Reduce(rbind,ct_l)
 
 # add country code
   ct_d$country <- country
 
 # add the descriptions of land cover classes
   ct_d <- merge(ct_d,y=slcc,by.x=c("from_class"),by.y=c("class"))
-  names(ct_bw_d)[6] <- "from_desc"
+  names(ct_d)[6] <- "from_desc"
 
   ct_d <- merge(ct_d,y=slcc,by.x=c("to_class"),by.y=c("class"))
   names(ct_d)[7] <- "to_desc"
@@ -86,6 +85,7 @@ lcc_calc <- function(brick,country,year_range) {
   for(i in unique(ct_d$year)) {
   ct_d$perc_affected <- 100*ct_d$area_km2/sum(ct_d$area_km2[ct_d$year==i])
   }
+  return(ct_d)
 }
 
 #read polygon masks ####

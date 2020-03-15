@@ -1,24 +1,31 @@
 # Create confusion matrices for LC change (by country)
-# Run after Calc_LC_Areas_by_LandAdminUnit.R
 
-source('scripts/pkg_functions.R')
+##### Run after Calc_LC_Areas_by_LandAdminUnit.R 
 
-# we start with BW — using the land cover brick (in conical equal area projection) prepared earlier in QGIS. 
+source('scripts/LC_1_ReadManipData.R')
 
-# cut down the time range to 2000-2018
+# we start with the land cover brick (in conical equal area projection) prepared earlier in QGIS. 
+# cut down the time range to 1999-2018
 
 lc_bw_99_18 <- lc_bw_92_18[[8:27]]
 lc_zw_99_18 <- lc_zw_92_18[[8:27]]
 
-# rename the layers in the brick
+# rename the layers in the brick -- not necessary but comforting
 names(lc_bw_99_18) <- c(paste("HKC_BW_LC_",c(1999:2018),sep="")) 
 names(lc_zw_99_18) <- c(paste("HKC_ZW_LC_",c(1999:2018),sep="")) 
 
-lc_bw_99_18 <- reclassify(lc_bw_00_18,rcm)
-lc_zw_00_18 <- reclassify(lc_zw_00_18,rcm)
+# Already done: ####
+# apply the simplified land cover classification
+# lc_bw_99_18 <- reclassify(lc_bw_99_18,rcm)
+# lc_zw_99_18 <- reclassify(lc_zw_99_18,rcm)
 
-bw_lcc <- lcc_calc(lc_bw_92_18,"BW",c(1999:2018))
-bw_lcc <- lcc_calc(lc_zw_99_18,"ZW",c(1999:2018))
+# Calculate LC change transitions ####
+
+bw_lcc <- lcc_calc(lc_bw_99_18,"BW",c(1999:2018))
+zw_lcc <- lcc_calc(lc_zw_99_18,"ZW",c(1999:2018))
+lcc <- rbind(bw_lcc,zw_lcc)
+
+head(bw_lcc)
+lcc$to_desc <- ifelse(lcc$from_class==lcc$to_class,"No change",lcc$to_desc)
 
 
-head(ct_d)

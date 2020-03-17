@@ -59,7 +59,7 @@ data <- merge(dat,slcc)
 names(data) <- c("lc_class","area_km2","year","country","land_use_tenure","lu_detail","description")
 # reorder columns
 data <- data[,c(3,4,5,6,1,7,2)]
-data <- data[order(data$year,data$country,data$land_use_tenure,data$class),]
+data <- data[order(data$country,data$year,data$land_use_tenure,data$lc_class),]
 
 test <- tapply(data$area_km2,INDEX =list(data$year,data$country,data$land_use_tenure,data$description),FUN=sum)
 # write output

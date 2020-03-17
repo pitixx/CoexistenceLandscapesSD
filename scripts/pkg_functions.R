@@ -2,6 +2,7 @@ library(raster)
 library(sf)
 library(ncdf4)
 library(lubridate)
+library(stars)
 
 # Function right()
 right  <-  function(text, num_char) {
@@ -87,28 +88,3 @@ lcc_calc <- function(brick,country,year_range) {
   }
   return(ct_d)
 }
-
-#read polygon masks ####
-mask_bw <- read_sf('data/HKC_BW.gpkg')
-mask_zw <- read_sf('data/HKC_ZW.gpkg')
-
-#read the admin land use/tenure polygon layer
-alu <- read_sf('data/HKC_LU.gpkg')
-
-#project to Albers equal area
-alu_ea <- st_transform(alu,crs = 102022)
-
-#oder the table in our polygon land use/tenure layer
-alu_ea <- alu_ea[order(alu_ea$Land.Use,alu_ea$Tenure),]
-
-# Recode objectid in our poly layer
-alu_ea$OBJECTID <- seq(1:length(alu_ea$Country))
-
-# Reclass matrix for land cover
-rcm <- matrix(c(10,40,62,122,11,40,110,122,10,30,60,120),ncol=3)
-
-# Land cover type names
-lccs <- read.delim('data/lccs_hkc.txt')
-
-slcc <- data.frame("class"=c(10,30,60,120,130,180,190,200,210),"description"=c("Crops rainfed","Crop-tree mosaic", "Woodland","Shrubland","Grassland","Flooded Vegetation","Built areas", "Bare areas", "Water bodies"))
-

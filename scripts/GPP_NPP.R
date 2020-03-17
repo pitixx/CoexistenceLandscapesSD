@@ -41,4 +41,4 @@ g_zw$date <- as.Date(t)
 
 gpp <- rbind(n_bw,n_zw)
 
-write.csv(x = netpp,file='output/HKC_GPP_2000-2016.csv')
+write.csv(x = netpp,file='output/HKC_GPP_2000-2016.csv',row.names = F)

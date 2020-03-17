@@ -63,5 +63,5 @@ data <- data[order(data$country,data$year,data$land_use_tenure,data$lc_class),]
 
 test <- tapply(data$area_km2,INDEX =list(data$year,data$country,data$land_use_tenure,data$description),FUN=sum)
 # write output
-write.csv(data,file = 'output/hkc_luc_1992-2018.csv')
+write.csv(data,file = 'output/hkc_luc_1992-2018.csv',row.names = F)
 

@@ -80,6 +80,6 @@ soilmoist <- rbind(m_bw,m_zw)
 climate <- merge(climate,soilmoist,by=c("country","date"))
 
 
-write.csv(x = climate,file='output/HKC_climate_CanRCM4_1991-2030.csv')
+write.csv(x = climate,file='output/HKC_climate_CanRCM4_1991-2030.csv',row.names = F)
 
 

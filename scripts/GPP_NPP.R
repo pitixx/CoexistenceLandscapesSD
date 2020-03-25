@@ -23,16 +23,15 @@ for(i in 2000:2016){
   for(j in 1:12){
     r <- paste(i, "-",ifelse(j<10, paste("0",j,sep=''),j),"-15",sep='')
     t <- c(t,r)
-    
   } 
 }
 
 # Cross-tab gpp with land cover
-
+# not doing as resolution is too coarse. 
 # gpp_lc_zw <- xtab_land(gpp_zw, mask_zw)
 # gpp_lc_bw <- xtab_land(gpp, masc_bw)
 
-
+#### Extract gpp values ####
 g_bw <- Xtract(gpp,mask_bw,"gpp","BW")
 g_zw <- Xtract(gpp,mask_zw,"gpp","ZW")
 

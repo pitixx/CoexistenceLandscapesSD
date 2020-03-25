@@ -21,15 +21,20 @@ lcc <- rbind(bw_lcc,zw_lcc)
 lcc$from_desc <- as.character.factor(lcc$from_desc)
 lcc$to_desc <- as.character.factor(lcc$to_desc)
 
+#sort the table
 lcc <- lcc[order(lcc$country,lcc$year,lcc$from_class,lcc$to_class),]
+
+# remove no change transitions
 lcc$change <- ifelse(lcc$from_class==lcc$to_class,"No change",paste(lcc$to_desc," expansion",sep=''))
 
+# write out result
 write.csv(lcc,file = 'output/HKC_lcc_2000_2018_annual.csv',row.names = F)
 
 ##### Land cover change from 2000 to 2018 (single comparison) #### 
 lcc_bw_00_18 <- crosstab(lc_bw_99_18[[2]],lc_bw_99_18[[20]],long=T)
 lcc_zw_00_18 <- crosstab(lc_zw_99_18[[2]],lc_zw_99_18[[20]],long=T)
 
+# remove no change transitions
 lcc_bw_00_18 <- lcc_bw_00_18[lcc_bw_00_18$HKC_BW_LC_2000!=lcc_bw_00_18$HKC_BW_LC_2018,]
 lcc_zw_00_18 <- lcc_zw_00_18[lcc_zw_00_18$HKC_ZW_LC_2000!=lcc_zw_00_18$HKC_ZW_LC_2018,]
 

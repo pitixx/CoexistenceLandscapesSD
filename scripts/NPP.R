@@ -7,7 +7,6 @@ library(reshape)
 # For details see https://neo.sci.gsfc.nasa.gov/view.php?datasetId=MOD17A2_M_PSN
 
 #### extract monthly npp ###
-# data downloaded from https://neo.sci.gsfc.nasa.gov/archive/geotiff.float/MOD17A2_M_PSN/
 
 files <- list.files(path='~/Cloud/OneDrive - United Nations/Data/GeoData/PrimaryProduction/NPP_MODIS17A2_M_PSN_Monthly/',pattern = "*.tif")
 

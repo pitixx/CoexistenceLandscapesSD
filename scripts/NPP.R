@@ -1,11 +1,17 @@
 
 source('scripts/LC_1_ReadManipData.R')
 library(reshape)
+<<<<<<< HEAD
 
 #### extract monthly npp ###
 # data downloaded from https://neo.sci.gsfc.nasa.gov/archive/geotiff.float/MOD17A2_M_PSN/
 # For details see https://neo.sci.gsfc.nasa.gov/view.php?datasetId=MOD17A2_M_PSN
 
+=======
+
+#### extract monthly npp ###
+# data downloaded from https://neo.sci.gsfc.nasa.gov/archive/geotiff.float/MOD17A2_M_PSN/
+>>>>>>> 90d70186affe52bf4d2ab4f307ed84a35d38dc0f
 files <- list.files(path='~/Cloud/OneDrive - United Nations/Data/GeoData/PrimaryProduction/NPP_MODIS17A2_M_PSN_Monthly/',pattern = "*.tif")
 
 npp <- stack(paste("~/Cloud/OneDrive - United Nations/Data/GeoData/PrimaryProduction/NPP_MODIS17A2_M_PSN_Monthly/",files[1],sep=''))

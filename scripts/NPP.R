@@ -53,8 +53,8 @@ alu_g$LUT <- paste(alu_g$Land.Use," (",alu_g$Tenure,")",sep="")
 # alu_bw <- alu_g[alu_g$Country=="Botswana",9]
 # alu_zw <- alu_g[alu_g$Country=="Zimbabwe",9]
 
-npp_lut_bw <- zonal(x=npp_bw_ea,z=lut_ras_bw,fun='sum',progress='text')
-npp_lut_zw <- zonal(x=npp_zw_ea,z=lut_ras_zw,fun='sum',progress='text')
+npp_lut_bw <- zonal(x=npp_bw_ea,z=lut_ras_bw,fun='mean',progress='text')
+npp_lut_zw <- zonal(x=npp_zw_ea,z=lut_ras_zw,fun='mean',progress='text')
 
 npp_lut_bw_df <- as.data.frame(t(npp_lut_bw))
 npp_lut_zw_df <- as.data.frame(t(npp_lut_zw))

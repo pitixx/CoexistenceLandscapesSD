@@ -1,0 +1,52 @@
+"country","lut","lc_class","lc_desc","area_change_km2"
+"BW","Forest (State)",10,"Crops rainfed",-20.55196672
+"BW","Forest (State)",30,"Crop-tree mosaic",-4.92089344
+"BW","Forest (State)",60,"Woodland",80.47108096
+"BW","Forest (State)",120,"Shrubland",-138.65340928
+"BW","Forest (State)",130,"Grassland",-5.49982208
+"BW","Mixed (Private)",10,"Crops rainfed",-0.28946432
+"BW","Mixed (Private)",30,"Crop-tree mosaic",-5.49982208
+"BW","Mixed (Private)",60,"Woodland",495.56291584
+"BW","Mixed (Private)",120,"Shrubland",-489.77362944
+"BW","Mixed (Private)",130,"Grassland",-68.31357952
+"BW","Mixed (Private)",200,"Bare areas",-0.86839296
+"BW","Wildlife (State)",10,"Crops rainfed",-1.15785728
+"BW","Wildlife (State)",30,"Crop-tree mosaic",-0.86839296
+"BW","Wildlife (State)",60,"Woodland",70.05036544
+"BW","Wildlife (State)",120,"Shrubland",-67.73465088
+"BW","Wildlife (State)",130,"Grassland",-1.4473216
+"ZW","Forest (State)",10,"Crops rainfed",-2.02625024
+"ZW","Forest (State)",30,"Crop-tree mosaic",-3.47357184
+"ZW","Forest (State)",60,"Woodland",36.47250432
+"ZW","Forest (State)",120,"Shrubland",-119.54876416
+"ZW","Mixed (Communal)",10,"Crops rainfed",29.23589632
+"ZW","Mixed (Communal)",30,"Crop-tree mosaic",-2.60517888
+"ZW","Mixed (Communal)",60,"Woodland",42.26179072
+"ZW","Mixed (Communal)",120,"Shrubland",-81.0500096
+"ZW","Mixed (Private)",10,"Crops rainfed",-3.18410752
+"ZW","Mixed (Private)",30,"Crop-tree mosaic",-1.15785728
+"ZW","Mixed (Private)",60,"Woodland",-8.39446528
+"ZW","Mixed (Private)",120,"Shrubland",-2.66453525910038e-15
+"ZW","Mixed (Private)",130,"Grassland",0.28946432
+"ZW","Mixed (Private)",180,"Flooded Vegetation",-1.4473216
+"ZW","Mixed (Private)",190,"Built areas",43.419648
+"ZW","Mixed (Private)",200,"Bare areas",-18.8151808
+"ZW","Mixed (Private)",210,"Water bodies",-0.28946432
+"ZW","Wildlife (Communal)",10,"Crops rainfed",-50.07732736
+"ZW","Wildlife (Communal)",30,"Crop-tree mosaic",0.28946432
+"ZW","Wildlife (Communal)",60,"Woodland",74.97125888
+"ZW","Wildlife (Communal)",120,"Shrubland",-14.473216
+"ZW","Wildlife (Communal)",130,"Grassland",-1.4473216
+"ZW","Wildlife (Communal)",210,"Water bodies",1.4473216
+"ZW","Wildlife (Private)",10,"Crops rainfed",0.28946432
+"ZW","Wildlife (Private)",30,"Crop-tree mosaic",-0.28946432
+"ZW","Wildlife (Private)",60,"Woodland",2.60517888
+"ZW","Wildlife (Private)",120,"Shrubland",-0.57892864
+"ZW","Wildlife (Private)",130,"Grassland",-1.73678592
+"ZW","Wildlife (State)",10,"Crops rainfed",6.36821504
+"ZW","Wildlife (State)",30,"Crop-tree mosaic",23.1571456
+"ZW","Wildlife (State)",60,"Woodland",278.17521152
+"ZW","Wildlife (State)",120,"Shrubland",-281.06985472
+"ZW","Wildlife (State)",130,"Grassland",-14.18375168
+"ZW","Wildlife (State)",180,"Flooded Vegetation",1.15785728
+"ZW","Wildlife (State)",210,"Water bodies",-0.86839296

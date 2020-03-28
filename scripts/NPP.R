@@ -44,11 +44,11 @@ lut_ras_zw <- mask(lut_ras_zw,alu_ea_zw)
 npp_bw_ea <- projectRaster(npp_bw,lut_ras_bw,method="ngb")
 npp_zw_ea <- projectRaster(npp_zw,lut_ras_zw,method="ngb")
 
+
 # #Project alu to WGS84
  alu_g <- st_transform(alu_ea,crs=4326)
 
 ### Extract npp values by lanc use / tenure ####
-alu_g$LUT <- paste(alu_g$Land.Use," (",alu_g$Tenure,")",sep="")
 
 # alu_bw <- alu_g[alu_g$Country=="Botswana",9]
 # alu_zw <- alu_g[alu_g$Country=="Zimbabwe",9]

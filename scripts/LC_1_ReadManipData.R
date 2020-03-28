@@ -6,17 +6,24 @@ source('scripts/pkg_functions.R')
 mask_bw <- read_sf('data/HKC_BW.gpkg')
 mask_zw <- read_sf('data/HKC_ZW.gpkg')
 
+# Equal area masks
+mask_ea_bw <- st_transform(mask_bw,crs = 102022)
+mask_ea_zw <- st_transform(mask_zw,crs = 102022)
+
 #read the admin land use/tenure polygon layer
 alu <- read_sf('data/HKC_LU.gpkg')
+
+# Recode objectid in our poly layer
+alu$OBJECTID <- seq(1:length(alu$Country))
+
+#Add Land Use / Tenure field
+alu$LUT <- paste(alu$Land.Use," (",alu$Tenure,")",sep="")
 
 #project to Albers equal area
 alu_ea <- st_transform(alu,crs = 102022)
 
 #oder the table in our polygon land use/tenure layer
 alu_ea <- alu_ea[order(alu_ea$Land.Use,alu_ea$Tenure),]
-
-# Recode objectid in our poly layer
-alu_ea$OBJECTID <- seq(1:length(alu_ea$Country))
 
 # Reclass matrix for land cover
 rcm <- matrix(c(10,40,62,122,11,40,110,122,10,30,60,120),ncol=3)
@@ -43,6 +50,12 @@ lut_ras_bw <- raster(lc_bw_92_15[[1]])
 lut_ras_zw <- rasterize(alu_ea,y = lut_ras_zw,field="OBJECTID")
 lut_ras_bw <- rasterize(alu_ea,y = lut_ras_bw,field="OBJECTID")
 
+# Mask the rasterized layers
+lut_ras_bw <- crop(lut_ras_bw,mask_ea_bw)
+lut_ras_bw <- crop(lut_ras_bw,mask_ea_bw)
+
+lut_ras_bw <- mask(lut_ras_bw,mask_ea_bw)
+lut_ras_zw <- mask(lut_ras_zw,mask_ea_zw)
 # Now we add 2016-18
 #Read the land cover rasters 
 # Reading from NetCDF4
@@ -90,3 +103,6 @@ panda_r[is.na(panda_r)] <- 1
 lc_bw_92_18 <- panda_r*lc_bw_92_18
 lc_bw_92_18[lc_bw_92_18<0] <- 10
 
+### Land use/tenure classes
+lut <- alu[,c(9,10)]
+st_geometry(lut) <- NULL

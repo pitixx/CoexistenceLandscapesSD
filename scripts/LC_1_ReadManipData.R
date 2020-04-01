@@ -12,6 +12,7 @@ mask_ea_zw <- st_transform(mask_zw,crs = 102022)
 
 #read the admin land use/tenure polygon layer
 alu <- read_sf('data/HKC_LU.gpkg')
+alu <- st_transform(alu,crs = 4326)
 
 # Recode objectid in our poly layer
 alu$OBJECTID <- seq(1:length(alu$Country))
@@ -41,14 +42,14 @@ lc_zw_92_15 <- brick('data/HKC_ZW_LC_1992-2015.tif')
 lc_bw_92_15 <- brick('data/HKC_BW_LC_1992-2015.tif')
 
 
-##### Rasterize the polygon Land Use Layer ##### 
+##### Rasterize the polygon Land Use Layer for each country ##### 
 # First create an empty raster of the same dimensions
 lut_ras_zw <- raster(lc_zw_92_15[[1]])
 lut_ras_bw <- raster(lc_bw_92_15[[1]])
 
 #Rasterize
-lut_ras_zw <- rasterize(alu_ea,y = lut_ras_zw,field="OBJECTID")
-lut_ras_bw <- rasterize(alu_ea,y = lut_ras_bw,field="OBJECTID")
+lut_ras_zw <- rasterize(alu,y = lut_ras_zw,field="OBJECTID")
+lut_ras_bw <- rasterize(alu,y = lut_ras_bw,field="OBJECTID")
 
 # Mask the rasterized layers
 lut_ras_bw <- crop(lut_ras_bw,mask_ea_bw)
@@ -76,7 +77,7 @@ lc16_18zw <- crop(lc16_18zw,mask_zw)
 
 #project to Albers Conical Equal Area
 lc16_18bw <- projectRaster(lc16_18bw,lut_ras_bw,method="ngb")
-lc16_18zw <- projectRaster(lc16_18zw,lut_ras_zw,method="ngb")
+lc16_18zw <- projectRaster(lc16_18zw, <- _ras_zw,method="ngb")
 
 ## Add the three latest layers to the main brick
 lc_zw_92_18 <- addLayer(lc_zw_92_15,lc16_18zw)
@@ -106,3 +107,10 @@ lc_bw_92_18[lc_bw_92_18<0] <- 10
 ### Land use/tenure classes
 lut <- alu[,c(9,10)]
 st_geometry(lut) <- NULL
+
+lut_al_df <- alu[,c(3,9,10,5)]
+st_geometry(lut_al_df) <- NULL
+
+### Extent of whole HKC WDA
+ext_al_ll_ex <- extent(alu)
+ext_al_ea_ex <- extent(alu_ea)

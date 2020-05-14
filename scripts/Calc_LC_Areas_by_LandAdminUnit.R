@@ -28,7 +28,7 @@ dat <- dat[dat$area!=0,]
 
 # replace the class codes by land use / tenure classes
 
-# y <- data.frame(cbind(alu_ea$OBJECTID,alu_ea$Land.Use,alu_ea$Tenure,alu_ea$LU_detail))
+# y <- data.frame(cbind(lut_al_ea_sv$OBJECTID,lut_al_ea_sv$Land.Use,lut_al_ea_sv$Tenure,lut_al_ea_sv$LU_detail))
 # names(y) <- c("OBJECTID","land_use_tenure")
 
 dat$au_code <- as.numeric(dat$au_code)
@@ -53,8 +53,8 @@ dat$lu_detail <- ifelse(dat$au_code==1, "Commercial Agriculture",
 names(dat)
 dat <- dat[,-2]
 
-# data <- merge(dat,lccs)
-data <- merge(dat,slcc)
+# data <- merge(dat,lccs_ns_tb)
+data <- merge(dat,lcc_simp_ns_tb)
 
 names(data) <- c("lc_class","area_km2","year","country","land_use_tenure","lu_detail","description")
 # reorder columns

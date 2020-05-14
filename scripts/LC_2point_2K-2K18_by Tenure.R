@@ -20,7 +20,7 @@ lcc_by_lut_bw_2K18 <- crosstab(x=lc_bw_2K_2K18[[2]],y=lut_ras_bw)
 lcc_by_lut_zw_2K <- crosstab(x=lc_zw_2K_2K18[[1]],y=lut_ras_zw,fun='sum')
 lcc_by_lut_zw_2K18 <- crosstab(x=lc_zw_2K_2K18[[2]],y=lut_ras_zw,fun='sum')
 
-#Subtract 2000 values from 2018 values
+#Subtract 2000 vlut_al_ea_sves from 2018 vlut_al_ea_sves
 lcc_bw <- lcc_by_lut_bw_2K18 - lcc_by_lut_bw_2K
 lcc_zw <- lcc_by_lut_zw_2K18 - lcc_by_lut_zw_2K
 
@@ -40,7 +40,7 @@ lcc_2K_18 <- rbind(lcc_bw,lcc_zw)
 #convert to areas
 lcc_2K_18$area_km2 <- lcc_2K_18$area_km*289464.32/1e6
 #assign LC and LUT codes
-lcc_2K_18 <- merge(lcc_2K_18,slcc,by="class")
+lcc_2K_18 <- merge(lcc_2K_18,lcc_simp_ns_tb,by="class")
 lcc_2K_18 <- merge(lcc_2K_18,lut,by="OBJECTID")
 
 #clean up

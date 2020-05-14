@@ -15,8 +15,8 @@ for(i in files) {
 
 
 # crop gpp to bw and zw components respectively
-gpp_zw <- crop(gpp,mask_zw)
-gpp_bw <- crop(gpp,mask_bw)
+gpp_zw <- crop(gpp,mask_zw_ll_sv)
+gpp_bw <- crop(gpp,mask_bw_ll_sv)
 
 t <- c()
 for(i in 2000:2016){
@@ -28,12 +28,12 @@ for(i in 2000:2016){
 
 # Cross-tab gpp with land cover
 # not doing as resolution is too coarse. 
-# gpp_lc_zw <- xtab_land(gpp_zw, mask_zw)
+# gpp_lc_zw <- xtab_land(gpp_zw, mask_zw_ll_sv)
 # gpp_lc_bw <- xtab_land(gpp, masc_bw)
 
-#### Extract gpp values ####
-g_bw <- Xtract(gpp,mask_bw,"gpp","BW")
-g_zw <- Xtract(gpp,mask_zw,"gpp","ZW")
+#### Extract gpp vlut_al_ea_sves ####
+g_bw <- Xtract(gpp,mask_bw_ll_sv,"gpp","BW")
+g_zw <- Xtract(gpp,mask_zw_ll_sv,"gpp","ZW")
 
 g_bw$date <- as.Date(t)
 g_zw$date <- as.Date(t)

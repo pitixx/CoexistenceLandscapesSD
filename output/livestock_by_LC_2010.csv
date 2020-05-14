@@ -1,0 +1,65 @@
+"country","species","lc_zone","lc_desc","heads"
+"BW","cattle",10,"Crops rainfed",5464.66359946132
+"BW","cattle",30,"Crop-tree mosaic",391.203606687486
+"BW","cattle",60,"Woodland",6793.49522443488
+"BW","cattle",120,"Shrubland",23836.9794309717
+"BW","cattle",130,"Grassland",1676.63713654876
+"BW","cattle",190,"Built areas",5.7719521522522
+"BW","cattle",200,"Bare areas",53.1798273921013
+"BW","goats",10,"Crops rainfed",2862.28217729926
+"BW","goats",30,"Crop-tree mosaic",120.142846792471
+"BW","goats",60,"Woodland",2566.19652931206
+"BW","goats",120,"Shrubland",8522.69182895403
+"BW","goats",130,"Grassland",618.308820351958
+"BW","goats",190,"Built areas",2.12887525558472
+"BW","goats",200,"Bare areas",31.3585700690746
+"BW","sheep",10,"Crops rainfed",8.35853323998003
+"BW","sheep",30,"Crop-tree mosaic",0.908984021465585
+"BW","sheep",60,"Woodland",8.49046149697369
+"BW","sheep",120,"Shrubland",37.7935519143537
+"BW","sheep",130,"Grassland",2.00939183624712
+"BW","sheep",190,"Built areas",0.00694797211326659
+"BW","sheep",200,"Bare areas",0.0810664552845992
+"BW","tlu",10,"Crops rainfed",2460.52299869061
+"BW","tlu",30,"Crop-tree mosaic",169.155066190287
+"BW","tlu",60,"Woodland",2981.39041705616
+"BW","tlu",120,"Shrubland",10416.1327569382
+"BW","tlu",130,"Grassland",734.428641468287
+"BW","tlu",190,"Built areas",2.52691376209259
+"BW","tlu",200,"Bare areas",24.2140353918076
+"ZW","cattle",10,"Crops rainfed",16510.1818935871
+"ZW","cattle",30,"Crop-tree mosaic",2107.3065776825
+"ZW","cattle",60,"Woodland",34370.8677838445
+"ZW","cattle",120,"Shrubland",247904.894407809
+"ZW","cattle",130,"Grassland",925.586487233639
+"ZW","cattle",180,"Flooded Vegetation",93.5526851415634
+"ZW","cattle",190,"Built areas",388.575498819351
+"ZW","cattle",200,"Bare areas",81.2746865153313
+"ZW","cattle",210,"Water bodies",299.786950588226
+"ZW","goats",10,"Crops rainfed",24989.3498643637
+"ZW","goats",30,"Crop-tree mosaic",1870.02748245001
+"ZW","goats",60,"Woodland",32608.3564887419
+"ZW","goats",120,"Shrubland",313093.646734297
+"ZW","goats",130,"Grassland",1548.23205072433
+"ZW","goats",180,"Flooded Vegetation",115.704742074013
+"ZW","goats",190,"Built areas",746.115306377411
+"ZW","goats",200,"Bare areas",133.740166425705
+"ZW","goats",210,"Water bodies",385.595939226449
+"ZW","sheep",10,"Crops rainfed",913.688696374651
+"ZW","sheep",30,"Crop-tree mosaic",75.5216686346103
+"ZW","sheep",60,"Woodland",1205.01267860486
+"ZW","sheep",120,"Shrubland",6467.08486224486
+"ZW","sheep",130,"Grassland",41.1534689510008
+"ZW","sheep",180,"Flooded Vegetation",4.25805970514193
+"ZW","sheep",190,"Built areas",16.0828401856124
+"ZW","sheep",200,"Bare areas",2.77341397572309
+"ZW","sheep",210,"Water bodies",26.8935496993363
+"ZW","tlu",10,"Crops rainfed",8852.40675902367
+"ZW","tlu",30,"Crop-tree mosaic",1018.21569412947
+"ZW","tlu",60,"Woodland",16775.6387770176
+"ZW","tlu",120,"Shrubland",127293.352964655
+"ZW","tlu",130,"Grassland",506.984756588936
+"ZW","tlu",180,"Flooded Vegetation",48.0125634074211
+"ZW","tlu",190,"Built areas",220.782274007797
+"ZW","tlu",200,"Bare areas",44.2943634390831
+"ZW","tlu",210,"Water bodies",156.228928953409

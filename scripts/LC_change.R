@@ -2,7 +2,7 @@
 
 source('scripts/LC_1_ReadManipData.R')
 
-# we start with the land cover brick (in conical equal area projection) prepared earlier in QGIS. 
+# we start with the land cover brick (in albers equal area projection) prepared earlier in QGIS. 
 # cut down the time range to 1999-2018
 
 lc_bw_99_18 <- lc_bw_92_18[[8:27]]
@@ -49,10 +49,10 @@ lcc_00_18 <- rbind(lcc_bw_00_18,lcc_zw_00_18)
 # convert pixels to areas in km2
 lcc_00_18$area_km2 <- lcc_00_18$area_km2*89464.32/1e6
 
-lcc_00_18 <- merge(lcc_00_18,y=slcc,by.x=c("from_class"),by.y=c("class"))
+lcc_00_18 <- merge(lcc_00_18,y=lcc_simp_ns_tb,by.x=c("from_class"),by.y=c("class"))
 names(lcc_00_18)[5] <- "from_desc"
 
-lcc_00_18 <- merge(lcc_00_18,y=slcc,by.x=c("to_class"),by.y=c("class"))
+lcc_00_18 <- merge(lcc_00_18,y=lcc_simp_ns_tb,by.x=c("to_class"),by.y=c("class"))
 names(lcc_00_18)[6] <- "to_desc"
 
 # reorder columns

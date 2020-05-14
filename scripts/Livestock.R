@@ -11,20 +11,19 @@ livestock_al_ll_sb <- addLayer(livestock_al_ll_sb,'~/Cloud/OneDrive - United Nat
 liv_tv <- c("cattle","goats","sheep","tlu")
 
 # Crop and mask
-livestock_al_ll_sb <- crop(livestock_al_ll_sb,alu)
+livestock_al_ll_sb <- crop(livestock_al_ll_sb,lut_al_ea_sv)
 
-livestock_al_ll_sb <- mask(livestock_al_ll_sb,alu)
+livestock_al_ll_sb <- mask(livestock_al_ll_sb,lut_al_ea_sv)
 
-# Rasterize alu_ea
-alu_al_ea_sr <
+# Rasterize lut_al_ea_sv
 
-alu_al_ll_sr <- rasterize(x=alu,y=livestock_al_ll_sb,field="OBJECTID")
-alu_al_ea_sr <- projectRaster(alu_al_ll_sr,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',method='ngb')
+lut_al_ea_sv_al_ll_sr <- rasterize(x=lut_al_ea_sv,y=livestock_al_ll_sb,field="OBJECTID")
+lut_al_ea_sv_al_ea_sr <- projectRaster(lut_al_ea_sv_al_ll_sr,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',method='ngb')
 
 # Project livestock to equal area 
 livestock_al_ea_sb <- projectRaster(livestock_al_ll_sb,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs')
 
-livestock_count_2010_df <- as.data.frame(zonal(livestock_al_ea_sb,alu_al_ea_sr,fun='sum'))
+livestock_count_2010_df <- as.data.frame(zonal(livestock_al_ea_sb,lut_al_ea_sv_al_ea_sr,fun='sum'))
 names(livestock_count_2010_df) <- c("OBJECTID","Cattle","Goats","Sheep","Small_Rumin_TLU")
 
 livestock_count_2010_df <- merge(livestock_count_2010_df,lut_al_df,by='OBJECTID')

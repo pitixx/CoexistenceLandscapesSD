@@ -28,13 +28,24 @@ ratirat <- function(brick){
     ratify(brick[[i]])
 }
 
-### Function to extract zonal from brick and put in df #### 
+#### Function to Asign latlong to raster with NA CRS
+assign_ll <- function(rs_layer_na_crs){
+  crs(rs_layer_na_crs) <- " +proj=longlat +datum=WGS84 +no_defs"  
+}
 
-Xtract <- function(layer,mask,variab,country) {
-  crs(layer) <- " +proj=longlat +datum=WGS84 +no_defs"
-  output <- mask(layer,mask)
-  output <- crop(layer,mask)
-  projected <- st_transform(mask,crs = 102022)
+####
+
+#### Project raster to EA ####
+
+
+#### 
+
+
+### Function to extract zonal from brick and put in df #### 
+Xtract <- function(rs_layer,rs_zones,variab,country) {
+  output <- mask(rs_layer,rs_zones)
+  output <- crop(rs_layer,rs_mask)
+  projected <- st_transform(rs_zones,crs = 102022)
   blank <- raster(projected)
   projected_raster <- rasterize(x = projected, y = blank,field="OBJECTID")
   output <- projectRaster(to =projected_raster,from = output,method="ngb")
@@ -49,6 +60,52 @@ Xtract <- function(layer,mask,variab,country) {
   y <- y[,c(2,3,1)]
   return(y)
 }
+
+
+#Function to crop global map to study area, resample to match land cover 
+resamp_crop_transf <- function(data_ww_ll_sx,mask_al_ll_sv,mask_1c_ll_sv,lcmask_al_ll_rx,method){
+  x <- crop(data_ww_ll_sx,mask_al_ll_sv)
+  x <- projectRaster(data_ww_ll_sx,lcmask_al_ll_rx,method = method)
+  x <- mask(x,mask_al_ll_sv)
+  x <- crop(x,mask_1c_ll_sv)
+  # rm(data_ww_ll_sx)
+  return(x) 
+}
+
+### Function to extract zonal by LC classes from brick and put in df ####
+#### layers must all be in projection and extent. 
+Xtract_byLC <- function(data_raster,zones_raster,var,country,func) {
+  x <- as.data.frame(zonal(data_raster,zones_raster,fun=func))
+  measures <-  names(x[-1])
+  y <- melt.data.frame(data = x,id.vars = "zone",measure.vars = measures)
+  y$country <- country
+  #from here needs to go to own function clean_my_data
+  y$variable <- substr(y$variable,2,11)
+  y$variable <- gsub(pattern = "\\.","-",y$variable)
+  y <- merge(y,lcc_simp_ns_tb,by.x='zone',by.y='class')
+  colnames(y) <- c("lc_class", "date", var,"country","lc_desc")
+  y <- y[,c(4,2,1,5,3)]
+  # up to here
+  return(y)
+}
+
+clean_myclim_data <- function(y){
+  y$variable <- substr(y$variable,2,11)
+  y$variable <- gsub(pattern = "\\.","-",y$variable)
+  y <- merge(y,lcc_simp_ns_tb,by.x='zone',by.y='class')
+  colnames(y) <- c("lc_class", "date", var,"country","lc_desc")
+  y <- y[,c(4,2,1,5,3)]
+}
+
+
+
+# data_raster = lstock_bw_ll_sb
+# zones_raster= lc9218_bw_ll_sb[[19]]
+# var= "lstock"
+# country= "BW"
+# func= "sum"
+
+
 
 ##### Function to calculate annual land cover changes ####
 
@@ -71,10 +128,10 @@ lcc_calc <- function(brick,country,year_range) {
   ct_d$country <- country
 
 # add the descriptions of land cover classes
-  ct_d <- merge(ct_d,y=slcc,by.x=c("from_class"),by.y=c("class"))
+  ct_d <- merge(ct_d,y=lcc_simp_ns_tb,by.x=c("from_class"),by.y=c("class"))
   names(ct_d)[6] <- "from_desc"
 
-  ct_d <- merge(ct_d,y=slcc,by.x=c("to_class"),by.y=c("class"))
+  ct_d <- merge(ct_d,y=lcc_simp_ns_tb,by.x=c("to_class"),by.y=c("class"))
   names(ct_d)[7] <- "to_desc"
 
 # reorder columns

@@ -84,6 +84,7 @@ lc1618_zw_ll_sb <- mask(lc1618_zw_ll_sb,mask_zw_ll_sv)
 lc1618_zw_ll_sb <- crop(lc1618_zw_ll_sb,mask_zw_ll_sv)
 
 #project to Albers Conical Equal Area
+lc1618_al_ea_sb <- projectRaster(lc1618_al_ll_sb,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',method='ngb')
 lc1618_bw_ea_sb <- projectRaster(lc1618_bw_ll_sb,lut_bw_ea_sr,method="ngb")
 lc1618_zw_ea_sb <- projectRaster(lc1618_zw_ll_sb, lut_zw_ea_sr,method="ngb")
 

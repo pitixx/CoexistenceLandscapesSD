@@ -1,0 +1,118 @@
+"H2Omonths","lc_class","description","area"
+"12","10","Crops rainfed",0.0717801
+"12","30","Crop-tree mosaic",0
+"12","60","Woodland",0.1333059
+"12","120","Shrubland",8.0261871
+"12","130","Grassland",0.16626615
+"12","180","Flooded Vegetation",0.7163361
+"12","190","Built areas",0.22779195
+"12","200","Bare areas",0.18970455
+"12","210","Water bodies",44.18358135
+"11","10","Crops rainfed",0.0087894
+"11","30","Crop-tree mosaic",0
+"11","60","Woodland",0.00512715
+"11","120","Shrubland",0.21607275
+"11","130","Grassland",0.00366225
+"11","180","Flooded Vegetation",0.00219735
+"11","190","Built areas",0.0117192
+"11","200","Bare areas",0.0087894
+"11","210","Water bodies",0.19702905
+"10","10","Crops rainfed",0.06665295
+"10","30","Crop-tree mosaic",0
+"10","60","Woodland",0.00659205
+"10","120","Shrubland",0.7881162
+"10","130","Grassland",0.014649
+"10","180","Flooded Vegetation",0.0336927
+"10","190","Built areas",0.0278331
+"10","200","Bare areas",0.0102543
+"10","210","Water bodies",0.8774751
+"9","10","Crops rainfed",0.04614435
+"9","30","Crop-tree mosaic",0.0014649
+"9","60","Woodland",0.0161139
+"9","120","Shrubland",1.289112
+"9","130","Grassland",0.05932845
+"9","180","Flooded Vegetation",0.05200395
+"9","190","Built areas",0.0322278
+"9","200","Bare areas",0.01391655
+"9","210","Water bodies",1.31035305
+"8","10","Crops rainfed",0.043947
+"8","30","Crop-tree mosaic",0.00219735
+"8","60","Woodland",0.0205086
+"8","120","Shrubland",1.40850135
+"8","130","Grassland",0.0615258
+"8","180","Flooded Vegetation",0.17212575
+"8","190","Built areas",0.0263682
+"8","200","Bare areas",0.0117192
+"8","210","Water bodies",1.72931445
+"7","10","Crops rainfed",0.0571311
+"7","30","Crop-tree mosaic",0.0043947
+"7","60","Woodland",0.0322278
+"7","120","Shrubland",1.5923463
+"7","130","Grassland",0.0542013
+"7","180","Flooded Vegetation",0.1391655
+"7","190","Built areas",0.0263682
+"7","200","Bare areas",0.01245165
+"7","210","Water bodies",1.4150934
+"6","10","Crops rainfed",0.02856555
+"6","30","Crop-tree mosaic",0.0043947
+"6","60","Woodland",0.06665295
+"6","120","Shrubland",2.1665871
+"6","130","Grassland",0.0864291
+"6","180","Flooded Vegetation",0.2021562
+"6","190","Built areas",0.0307629
+"6","200","Bare areas",0.00952185
+"6","210","Water bodies",1.77326145
+"5","10","Crops rainfed",0.0454119
+"5","30","Crop-tree mosaic",0.0043947
+"5","60","Woodland",0.04321455
+"5","120","Shrubland",2.84556825
+"5","130","Grassland",0.0717801
+"5","180","Flooded Vegetation",0.17945025
+"5","190","Built areas",0.03296025
+"5","200","Bare areas",0.0161139
+"5","210","Water bodies",1.3945848
+"4","10","Crops rainfed",0.0205086
+"4","30","Crop-tree mosaic",0.0014649
+"4","60","Woodland",0.06518805
+"4","120","Shrubland",2.20833675
+"4","130","Grassland",0.06518805
+"4","180","Flooded Vegetation",0.0996132
+"4","190","Built areas",0.02856555
+"4","200","Bare areas",0.0175788
+"4","210","Water bodies",0.83279565
+"3","10","Crops rainfed",0.02563575
+"3","30","Crop-tree mosaic",0.0014649
+"3","60","Woodland",0.10620525
+"3","120","Shrubland",2.2207884
+"3","130","Grassland",0.05200395
+"3","180","Flooded Vegetation",0.0571311
+"3","190","Built areas",0.058596
+"3","200","Bare areas",0.01391655
+"3","210","Water bodies",0.5405481
+"2","10","Crops rainfed",0.02563575
+"2","30","Crop-tree mosaic",0.0058596
+"2","60","Woodland",0.09741585
+"2","120","Shrubland",1.76740185
+"2","130","Grassland",0.02417085
+"2","180","Flooded Vegetation",0.04760925
+"2","190","Built areas",0.1230516
+"2","200","Bare areas",0.01977615
+"2","210","Water bodies",0.49879845
+"1","10","Crops rainfed",0.02856555
+"1","30","Crop-tree mosaic",0.00659205
+"1","60","Woodland",0.1098675
+"1","120","Shrubland",1.2671385
+"1","130","Grassland",0.01391655
+"1","180","Flooded Vegetation",0.0498066
+"1","190","Built areas",0.1567443
+"1","200","Bare areas",0.0366225
+"1","210","Water bodies",0.3779442
+"0","10","Crops rainfed",1455.30563745
+"0","30","Crop-tree mosaic",894.14785935
+"0","60","Woodland",2171.41614285
+"0","120","Shrubland",17135.73000825
+"0","130","Grassland",324.30908385
+"0","180","Flooded Vegetation",15.08920245
+"0","190","Built areas",32.26954965
+"0","200","Bare areas",68.90962845
+"0","210","Water bodies",21.8328696

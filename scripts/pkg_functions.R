@@ -13,7 +13,7 @@ right  <-  function(text, num_char) {
 ####  Function xtab to give the count of each type of pixel, which multiplied by 89464.32 and divided by 1e6 will give the area in km2. ####  
 xtab_land <- function(lc_brick, mask){
   for(i in 1:length(names(lc_brick))) {
-    x <- data.frame()
+    x <- data.frame
     x<- as.data.frame(crosstab(lc_brick[[i]],mask))
     x$year <- 1991+i
     names(x) <- c("class","au_code","area","year")
@@ -35,10 +35,7 @@ assign_ll <- function(rs_layer_na_crs){
 
 ####
 
-#### Project raster to EA ####
-
-
-#### 
+#### Pr
 
 
 ### Function to extract zonal from brick and put in df #### 

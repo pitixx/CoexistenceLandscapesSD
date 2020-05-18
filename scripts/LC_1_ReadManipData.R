@@ -21,8 +21,6 @@ lut_al_mc_sv$OBJECTID <- seq(1:length(lut_al_mc_sv$Country))
 lut_al_ll_sv <- st_transform(lut_al_mc_sv,crs = 4326)
 lut_al_ea_sv <- st_transform(lut_al_mc_sv,crs = 102022)
 
-
-
 #Add Land Use / Tenure field
 lut_al_ea_sv$LUT <- paste(lut_al_ea_sv$Land.Use," (",lut_al_ea_sv$Tenure,")",sep="")
 
@@ -40,9 +38,19 @@ lccs_ns_tb <- read.delim('data/lccs_hkc.txt')
 
 lcc_simp_ns_tb <- data.frame("class"=c(10,30,60,120,130,180,190,200,210),"description"=c("Crops rainfed","Crop-tree mosaic", "Woodland","Shrubland","Grassland","Flooded Vegetation","Built areas", "Bare areas", "Water bodies"))
 
+## Land cover for the whole WDA (added 18.05.2020)
+lc0018_al_ll_sb <- brick('~/Cloud/OneDrive - United Nations/Data/GeoData/LandCover/ESA/ESACCI-Africa_LC-L4-LCCS-Map-300m-P1Y-1992_2015-v2.0.7.tif')
+lc0018_al_ll_sb <- lc0018_al_ll_sb[[9:24]]
+lc0018_al_ll_sb <- crop(lc0018_al_ll_sb,lut_al_ll_sv)
 
-# 1992-2015 land cover for the BW and ZW componwents of HKC (prepared earlier in Qgis)
-#lc stands for land cover — already in equal area projcection
+lc0018_al_ll_sb <- addLayer(lc0018_al_ll_sb,lc1618_al_ll_sb[[1]])
+lc0018_al_ll_sb <- addLayer(lc0018_al_ll_sb,lc1618_al_ll_sb[[2]])
+lc0018_al_ll_sb <- addLayer(lc0018_al_ll_sb,lc1618_al_ll_sb[[3]])
+
+names(lc0018_al_ll_sb) <- c(2000:2018)
+
+# 1992-2015 land cover for the BW and ZW components of HKC (prepared earlier in Qgis)
+#lc stands for land cover — already in equal area projection
 
 lc9215_zw_ea_sb <- brick('data/HKC_ZW_LC_1992-2015.tif')
 lc9215_bw_ea_sb <- brick('data/HKC_BW_LC_1992-2015.tif')
@@ -84,7 +92,9 @@ lc1618_zw_ll_sb <- mask(lc1618_zw_ll_sb,mask_zw_ll_sv)
 lc1618_zw_ll_sb <- crop(lc1618_zw_ll_sb,mask_zw_ll_sv)
 
 #project to Albers Conical Equal Area
+
 lc1618_al_ea_sb <- projectRaster(lc1618_al_ll_sb,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',method='ngb')
+
 lc1618_bw_ea_sb <- projectRaster(lc1618_bw_ll_sb,lut_bw_ea_sr,method="ngb")
 lc1618_zw_ea_sb <- projectRaster(lc1618_zw_ll_sb, lut_zw_ea_sr,method="ngb")
 

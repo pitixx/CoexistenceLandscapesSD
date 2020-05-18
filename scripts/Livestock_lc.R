@@ -10,7 +10,11 @@ names(livestock_af_ll_sb) <- c("cattle","goats","sheep","tlu")
 
 # # Crop livestock to WDA
 livestock_al_ll_sb <- crop(livestock_af_ll_sb,mask_al_ll_sv)
+<<<<<<< HEAD
 # mask (not needed?)
+=======
+# 
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 livestock_al_ll_sb <- mask(livestock_al_ll_sb,mask_al_ll_sv)
 
 # Project country land covers to ll 
@@ -33,7 +37,10 @@ livestock_bw_ns_df <- Xtract_byLC(
   "BW",
   "sum")
 
+<<<<<<< HEAD
 livestock_bw_ns_df <- clean_mylstock_data(livestock_bw_ns_df)
+=======
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 # Calculate livestock for Zimbabwe
 lstock_zw_ll_sb <- resamp_crop_transf(
@@ -50,9 +57,43 @@ livestock_zw_ns_df <- Xtract_byLC(
   "ZW",
   "sum")
 
+<<<<<<< HEAD
 livestock_zw_ns_df <- clean_mylstock_data(livestock_zw_ns_df)
 
 livestock_al_ns_df <- rbind(livestock_bw_ns_df,livestock_zw_ns_df)
 
 
 write.csv(livestock_al_ns_df,file='output/livestock_by_LC_2010.csv',row.names = F)
+=======
+
+
+
+
+# Crop livestock to BW and ZW
+livestock_bw_ll_sb <- crop(livestock_al_ll_sb,mask_bw_ll_sv)
+livestock_bw_ll_sb <- mask(livestock_bw_ll_sb,mask_bw_ll_sv)
+
+# # Rasterize lut_al_ea_sv
+# 
+# lut_al_ea_sv_al_ll_sr <- rasterize(x=lut_al_ea_sv,y=livestock_al_ll_sb,field="OBJECTID")
+
+# lut_al_ea_sv_al_ea_sr <- projectRaster(lut_al_ea_sv_al_ll_sr,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',method='ngb')
+
+
+livestock_count_2010_df <- as.data.frame(zonal(livestock_bw_ll_sb,lc_bw_92_18[[19]],fun='sum'))
+
+names(livestock_count_2010_df) <- c("OBJECTID","Cattle","Goats","Sheep","Small_Rumin_TLU")
+
+livestock_count_2010_df <- merge(livestock_count_2010_df,lut_al_df,by='OBJECTID')
+
+livestock_count_2010_df <- livestock_count_2010_df[,c(6,7,8,2,3,4,5)]
+
+livestock_count_2010_df <- aggregate(livestock_count_2010_df[,c(3:7)],by=list(livestock_count_2010_df$Country,livestock_count_2010_df$LUT),FUN=sum)
+
+names(livestock_count_2010_df) <- c("Country", "LUT","area_km2","cattle","goats","sheep","small_rumin_TLU")
+livestock_count_2010_df$Country <-  ifelse(livestock_count_2010_df$Country=="Zimbabwe","ZW","BW")
+
+livestock_count_2010_df <- livestock_count_2010_df[order(livestock_count_2010_df$Country, livestock_count_2010_df$LUT),]
+
+write.csv(livestock_count_2010_df,file='output/livestock_by_LUT_2010.csv',row.names = F)
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0

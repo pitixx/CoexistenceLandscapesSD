@@ -25,7 +25,10 @@ rain_bw_ll_sb <- resamp_crop_transf(
   )
 
 rainxlc_bw_ns_df <- Xtract_byLC(rain_bw_ll_sb,lc1618_bw_ll_sb[[3]],"rain_lm2","BW","mean")
+<<<<<<< HEAD
 rainxlc_bw_ns_df <- clean_myclim_data(rainxlc_bw_ns_df,"rain")
+=======
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 # Zimbabwe
 rain_zw_ll_sb <- resamp_crop_transf(
@@ -37,7 +40,10 @@ rain_zw_ll_sb <- resamp_crop_transf(
 )
 
 rainxlc_zw_ns_df <- Xtract_byLC(rain_zw_ll_sb,lc1618_zw_ll_sb[[3]],"rain_lm2","ZW","mean")
+<<<<<<< HEAD
 rainxlc_zw_ns_df <- clean_myclim_data(rainxlc_zw_ns_df,"rain")
+=======
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 # Combine rain data and do conversions for total monthly rain. ####
 rainxlc_al_ns_df <- rbind(rainxlc_bw_ns_df,rainxlc_zw_ns_df)
@@ -68,7 +74,11 @@ temp_bw_ll_sb <- resamp_crop_transf(
 )
 
 tempxlc_bw_ns_df <- Xtract_byLC(temp_bw_ll_sb,lc1618_bw_ll_sb[[3]],"temp","BW","mean")
+<<<<<<< HEAD
 tempxlc_bw_ns_df <- clean_myclim_data(tempxlc_bw_ns_df,"temp")
+=======
+
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 # Zimbabwe
 temp_zw_ll_sb <- resamp_crop_transf(
@@ -82,8 +92,11 @@ temp_zw_ll_sb <- resamp_crop_transf(
 # Clean convert assign
 
 tempxlc_zw_ns_df <- Xtract_byLC(temp_zw_ll_sb,lc1618_zw_ll_sb[[3]],"temp","ZW","mean")
+<<<<<<< HEAD
 tempxlc_zw_ns_df <- clean_myclim_data(tempxlc_zw_ns_df,"temp")
 
+=======
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 tempxlc_al_ns_df <- rbind(tempxlc_bw_ns_df,tempxlc_zw_ns_df)
 tempxlc_al_ns_df$temp <- tempxlc_al_ns_df$temp-273
@@ -112,7 +125,10 @@ evap_bw_ll_sb <- resamp_crop_transf(
 )
 
 evapxlc_bw_ns_df <- Xtract_byLC(evap_bw_ll_sb,lc1618_bw_ll_sb[[3]],"evap","BW","mean")
+<<<<<<< HEAD
 evapxlc_bw_ns_df <- clean_myclim_data(evapxlc_bw_ns_df,"evap")
+=======
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 # Evap Zimbabwe
 evap_zw_ll_sb <- resamp_crop_transf(
@@ -124,7 +140,10 @@ evap_zw_ll_sb <- resamp_crop_transf(
 )
 
 evapxlc_zw_ns_df <- Xtract_byLC(evap_zw_ll_sb,lc1618_zw_ll_sb[[3]],"evap","ZW","mean")
+<<<<<<< HEAD
 evapxlc_zw_ns_df <- clean_myclim_data(evapxlc_zw_ns_df,"evap")
+=======
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 evapxlc_al_ns_df <- rbind(evapxlc_bw_ns_df,evapxlc_zw_ns_df)
 evapxlc_al_ns_df$date <- as.Date(evapxlc_al_ns_df$date)
@@ -155,7 +174,11 @@ roff_bw_ll_sb <- resamp_crop_transf(
 )
 
 roffxlc_bw_ns_df <- Xtract_byLC(roff_bw_ll_sb,lc1618_bw_ll_sb[[3]],"roff","BW","mean")
+<<<<<<< HEAD
 roffxlc_bw_ns_df <- clean_myclim_data(roffxlc_bw_ns_df,"roff")
+=======
+
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 # roff Zimbabwe
 roff_zw_ll_sb <- resamp_crop_transf(
@@ -167,7 +190,10 @@ roff_zw_ll_sb <- resamp_crop_transf(
 )
 
 roffxlc_zw_ns_df <- Xtract_byLC(roff_zw_ll_sb,lc1618_zw_ll_sb[[3]],"roff","ZW","mean")
+<<<<<<< HEAD
 roffxlc_zw_ns_df <- clean_myclim_data(roffxlc_zw_ns_df,"roff")
+=======
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 roffxlc_al_ns_df <- rbind(roffxlc_bw_ns_df,roffxlc_zw_ns_df)
 roffxlc_al_ns_df$date <- as.Date(roffxlc_al_ns_df$date)
@@ -195,8 +221,12 @@ smc_bw_ll_sb <- resamp_crop_transf(
   method='ngb'
 )
 
+<<<<<<< HEAD
 smcxlc_bw_ns_df <- Xtract_byLC(smc_bw_ll_sb,lc1618_bw_ll_sb[[3]],"BW","mean")
 smcxlc_bw_ns_df <- clean_myclim_data(smcxlc_bw_ns_df,"smc")
+=======
+smcxlc_bw_ns_df <- Xtract_byLC(smc_bw_ll_sb,lc1618_bw_ll_sb[[3]],"smc","BW","mean")
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 # smc Zimbabwe
 smc_zw_ll_sb <- resamp_crop_transf(
@@ -207,8 +237,12 @@ smc_zw_ll_sb <- resamp_crop_transf(
   method='ngb'
 )
 
+<<<<<<< HEAD
 smcxlc_zw_ns_df <- Xtract_byLC(smc_zw_ll_sb,lc1618_zw_ll_sb[[3]],"ZW","mean")
 smcxlc_zw_ns_df <- clean_myclim_data(smcxlc_zw_ns_df,"smc")
+=======
+smcxlc_zw_ns_df <- Xtract_byLC(smc_zw_ll_sb,lc1618_zw_ll_sb[[3]],"smc","ZW","mean")
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 smcxlc_al_ns_df <- rbind(smcxlc_bw_ns_df,smcxlc_zw_ns_df)
 
@@ -231,6 +265,7 @@ rain_res_al_ll_sb <- resamp_crop_transf(
   method='ngb'
 )
 
+<<<<<<< HEAD
 rainxlc_al_ns_df <- Xtract_byLC(
   data_raster = rain_res_al_ll_sb,
   zones_raster = lc1618_al_ll_sb[[3]],
@@ -307,3 +342,7 @@ climate_bz_ns_df$roff_lm2 <- climate_bz_ns_df$roff*days_in_month(climate_bz_ns_d
 climate_bz_ns_df <- climate_bz_ns_df[order(climate_bz_ns_df$date,climate_bz_ns_df$lc_class,climate_bz_ns_df$country),]
 
 write.csv(climate_bz_ns_df,file = 'output/HKC_WDA_Agg_climate_by_LC_CanRCM4_1991-2030.csv',row.names = F)
+=======
+rainxlc_bw_ns_df <- Xtract_byLC(rain_bw_ll_sb,lc1618_bw_ll_sb[[3]],"rain_lm2","BW","mean")
+
+>>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0

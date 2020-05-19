@@ -33,19 +33,6 @@ assign_ll <- function(rs_layer_na_crs){
   crs(rs_layer_na_crs) <- " +proj=longlat +datum=WGS84 +no_defs"  
 }
 
-####
-<<<<<<< HEAD
-
-#### Pr
-
-=======
-
-#### Project raster to EA ####
-
-
-#### 
-
->>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
 
 ### Function to extract zonal from brick and put in df #### 
 Xtract <- function(rs_layer,rs_zones,variab,country) {
@@ -80,30 +67,22 @@ resamp_crop_transf <- function(data_ww_ll_sx,mask_al_ll_sv,mask_1c_ll_sv,lcmask_
 
 ### Function to extract zonal by LC classes from brick and put in df ####
 #### layers must all be in projection and extent. 
-<<<<<<< HEAD
+
 Xtract_byLC <- function(data_raster,zones_raster,country,func) {
-=======
-Xtract_byLC <- function(data_raster,zones_raster,var,country,func) {
->>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
   x <- as.data.frame(zonal(data_raster,zones_raster,fun=func))
   measures <-  names(x[-1])
   y <- melt.data.frame(data = x,id.vars = "zone",measure.vars = measures)
   y$country <- country
-<<<<<<< HEAD
   return(y)
 }
 
 
 clean_myclim_data <- function(y,var) {
-=======
-  #from here needs to go to own function clean_my_data
->>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
   y$variable <- substr(y$variable,2,11)
   y$variable <- gsub(pattern = "\\.","-",y$variable)
   y <- merge(y,lcc_simp_ns_tb,by.x='zone',by.y='class')
   colnames(y) <- c("lc_class", "date", var,"country","lc_desc")
   y <- y[,c(4,2,1,5,3)]
-<<<<<<< HEAD
   return(y)
 }
 
@@ -116,11 +95,6 @@ clean_mylstock_data <- function(y){
 }
 
 
-=======
-  # up to here
-  return(y)
-}
-
 clean_myclim_data <- function(y){
   y$variable <- substr(y$variable,2,11)
   y$variable <- gsub(pattern = "\\.","-",y$variable)
@@ -128,16 +102,6 @@ clean_myclim_data <- function(y){
   colnames(y) <- c("lc_class", "date", var,"country","lc_desc")
   y <- y[,c(4,2,1,5,3)]
 }
-
-
-
->>>>>>> e8be2a6abd8ac2094994eb5d79eec772e9dd70a0
-# data_raster = lstock_bw_ll_sb
-# zones_raster= lc9218_bw_ll_sb[[19]]
-# var= "lstock"
-# country= "BW"
-# func= "sum"
-
 
 
 ##### Function to calculate annual land cover changes ####

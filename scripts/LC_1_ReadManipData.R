@@ -38,6 +38,29 @@ lccs_ns_tb <- read.delim('data/lccs_hkc.txt')
 
 lcc_simp_ns_tb <- data.frame("class"=c(10,30,60,120,130,180,190,200,210),"description"=c("Crops rainfed","Crop-tree mosaic", "Woodland","Shrubland","Grassland","Flooded Vegetation","Built areas", "Bare areas", "Water bodies"))
 
+### Read 16-8 Rasters
+
+lc1618_ww_ll_sb <- stack('~/Cloud/OneDrive - United Nations/Data/GeoData/LandCover/ESA/C3S-LC-L4-LCCS-Map-300m-P1Y-2016-v2.1.1.nc',
+                         '~/Cloud/OneDrive - United Nations/Data/GeoData/LandCover/ESA/C3S-LC-L4-LCCS-Map-300m-P1Y-2017-v2.1.1.nc',
+                         '~/Cloud/OneDrive - United Nations/Data/GeoData/LandCover/ESA/C3S-LC-L4-LCCS-Map-300m-P1Y-2018-v2.1.1.nc',varname="lccs_class")
+
+
+lc1618_al_ll_sb <- crop(lc1618_ww_ll_sb,lut_al_ll_sv)
+lc1618_zw_ll_sb <- crop(lc1618_al_ll_sb,mask_zw_ll_sv)
+lc1618_bw_ll_sb <- crop(lc1618_al_ll_sb,mask_bw_ll_sv)
+
+#clip extent zw & bw
+lc1618_bw_ll_sb <- mask(lc1618_bw_ll_sb,mask_bw_ll_sv)
+lc1618_bw_ll_sb <- crop(lc1618_bw_ll_sb,mask_bw_ll_sv)
+
+lc1618_zw_ll_sb <- mask(lc1618_zw_ll_sb,mask_zw_ll_sv)
+lc1618_zw_ll_sb <- crop(lc1618_zw_ll_sb,mask_zw_ll_sv)
+
+#project to Albers Conical Equal Area
+
+lc1618_al_ea_sb <- projectRaster(lc1618_al_ll_sb,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',method='ngb')
+
+
 ## Land cover for the whole WDA (added 18.05.2020)
 lc0018_al_ll_sb <- brick('~/Cloud/OneDrive - United Nations/Data/GeoData/LandCover/ESA/ESACCI-Africa_LC-L4-LCCS-Map-300m-P1Y-1992_2015-v2.0.7.tif')
 lc0018_al_ll_sb <- lc0018_al_ll_sb[[9:24]]
@@ -48,6 +71,8 @@ lc0018_al_ll_sb <- addLayer(lc0018_al_ll_sb,lc1618_al_ll_sb[[2]])
 lc0018_al_ll_sb <- addLayer(lc0018_al_ll_sb,lc1618_al_ll_sb[[3]])
 
 names(lc0018_al_ll_sb) <- c(2000:2018)
+lc0018_al_ea_sb <- projectRaster(lc0018_al_ll_sb,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',method='ngb')
+
 
 # 1992-2015 land cover for the BW and ZW components of HKC (prepared earlier in Qgis)
 #lc stands for land cover — already in equal area projection
@@ -94,6 +119,8 @@ lc1618_zw_ll_sb <- crop(lc1618_zw_ll_sb,mask_zw_ll_sv)
 #project to Albers Conical Equal Area
 
 lc1618_al_ea_sb <- projectRaster(lc1618_al_ll_sb,crs='+proj=aea +lat_1=20 +lat_2=-23 +lat_0=0 +lon_0=25 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs',method='ngb')
+
+#project to Albers Conical Equal Area
 
 lc1618_bw_ea_sb <- projectRaster(lc1618_bw_ll_sb,lut_bw_ea_sr,method="ngb")
 lc1618_zw_ea_sb <- projectRaster(lc1618_zw_ll_sb, lut_zw_ea_sr,method="ngb")

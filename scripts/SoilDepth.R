@@ -1,21 +1,12 @@
 source('scripts/LC_1_ReadManipData.R')
 
-carbon_gl_ll_sr <- raster('~/Cloud/OneDrive - United Nations/Data/GeoData/BiomassCarbon/Global Vegetation biomass carbon stocks - 1 km resolution/data/w001001.adf')
+soil_sediment_depth <- raster('~/Cloud/OneDrive - United Nations/Data/GeoData/Soils/SoilDepth_ORNL/KAZA_HKC_SoilDepth/Avg_SoilDepth+SedDeposit_HKC_1304_1_20200520_140945984.tif')
+SoilDepth <- Carbon_Process(soil_sediment_depth)
 
-carbon_al_ll_sr <- crop(carbon_gl_ll_sr,lc0018_al_ll_sb)
 
-carbon_al_ll_sr_resmp <- projectRaster(carbon_al_ll_sr,lc0018_al_ll_sb)
+names(SoilDepth) <- c("lc_class","lc_desc","depth_m")
 
-carbon_al_ll_sr_resmp <- mask(carbon_al_ll_sr_resmp,lut_al_ll_sv)
-
-carbon_al_ns_df <- as.data.frame(zonal(carbon_al_ll_sr_resmp,lc0018_al_ll_sb[[1]],fun='mean'))
-
-carbon_al_ns_df <- merge(carbon_al_ns_df,lcc_simp_ns_tb,by.x="zone",by.y="class")
-
-names(carbon_al_ns_df) <- c("lc_class","kg_C_m2","lc_desc")
-carbon_al_ns_df <- carbon_al_ns_df[,c(1,3,2)]
-
-write.csv(carbon_al_ns_df,'output/HKC_CarbonBiomass_2000.csv',row.names = F)
+write.csv(SoilDepth,'output/HKC_Soil_sediment_depth.csv',row.names = F)
 
 # 
 # livestock_count_2010_df <- merge(livestock_count_2010_df,lut_al_df,by='OBJECTID')

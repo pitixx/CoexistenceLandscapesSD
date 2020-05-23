@@ -143,3 +143,27 @@ lcc_calc <- function(brick,country,year_range) {
   }
   return(ct_d)
 }
+
+### Function to process Carbon data #### 
+## Testing only : carbon_map <- carbonA_gl_ll_sr
+
+Carbon_Process <- function(carbon_map) {
+  carbon_al_ll_sr <- crop(carbon_map,lc0018_al_ll_sb)
+  
+  carbon_al_ll_sr_resmp <- projectRaster(carbon_al_ll_sr,lc0018_al_ll_sb)
+  
+  carbon_al_ll_sr_resmp <- mask(carbon_al_ll_sr_resmp,lut_al_ll_sv)
+  
+  carbon_al_ns_df <- as.data.frame(zonal(carbon_al_ll_sr_resmp,lc0018_al_ll_sb[[11]],fun='mean'))
+  
+  carbon_al_ns_df <- merge(carbon_al_ns_df,lcc_simp_ns_tb,by.x="zone",by.y="class")
+  
+  names(carbon_al_ns_df) <- c("lc_class","dens_MgC_Ha","lc_desc")
+  carbon_al_ns_df <- carbon_al_ns_df[,c(1,3,2)]
+  
+  ### scale correction as per paper
+  ## Paper reports tenths of MgC/Ha, so we multiply by 10
+  carbon_al_ns_df$dens_MgC_Ha <- carbon_al_ns_df$dens_MgC_Ha#*10
+  return(carbon_al_ns_df)
+}
+

@@ -11,8 +11,12 @@ species <- as.data.frame(unique(state_quotas$Species))
 names(species) <- c("common_name")
 game_weights <- read.csv('data/game_weights.csv',sep=',')
 
+
 meat <- merge(state_quotas,game_weights,by.x='Species',by.y='common_name')
+
+### Game weights edited to include blanks in weight
 
 meat$quota_weight <- meat$Quota*meat$Adult.Body.Mass.Kg
 
-write.csv(meat,'data/hkc_zw_state_quotas_clean.csv')
+# Writing will overwite the data that was manually entered .
+# write.csv(meat,'data/hkc_zw_state_quotas_clean.csv')
